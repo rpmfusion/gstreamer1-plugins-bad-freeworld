@@ -4,8 +4,8 @@
 
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
-Version:        1.0.2
-Release:        2%{?dist}
+Version:        1.0.5
+Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
@@ -14,7 +14,6 @@ BuildRequires:  gstreamer1-devel >= 1.0.0
 BuildRequires:  gstreamer1-plugins-base-devel >= 1.0.0
 BuildRequires:  check
 BuildRequires:  gettext-devel
-BuildRequires:  PyXML
 BuildRequires:  libXt-devel
 BuildRequires:  gtk-doc
 BuildRequires:  orc-devel
@@ -92,6 +91,10 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Sat Mar  2 2013 Hans de Goede <j.w.r.degoede@gmail.com> - 1.0.5-1
+- New upstream release 1.0.5
+- Drop no longer needed PyXML BuildRequires (rf#2572)
+
 * Sat Nov  3 2012 Hans de Goede <j.w.r.degoede@gmail.com> - 1.0.2-2
 - Include some more files in %%doc (rf#2473)
 
