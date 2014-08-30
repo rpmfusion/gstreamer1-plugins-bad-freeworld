@@ -4,14 +4,14 @@
 
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
-Version:        1.2.4
+Version:        1.4.1
 Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
 Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
-BuildRequires:  gstreamer1-devel >= 1.0.0
-BuildRequires:  gstreamer1-plugins-base-devel >= 1.0.0
+BuildRequires:  gstreamer1-devel >= 1.4.0
+BuildRequires:  gstreamer1-plugins-base-devel >= 1.4.0
 BuildRequires:  check
 BuildRequires:  gettext-devel
 BuildRequires:  libXt-devel
@@ -91,6 +91,9 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Sat Aug 30 2014 Hans de Goede <j.w.r.degoede@gmail.com> - 1.4.1-1
+- Rebase to new upstream release 1.4.1
+
 * Sun Jun 15 2014 Hans de Goede <j.w.r.degoede@gmail.com> - 1.2.4-1
 - Rebase to new upstream release 1.2.4
 
