@@ -5,11 +5,13 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Version:        1.4.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
 Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
+# From upstream git
+Patch1:         0001-fix-faad2-version-check.patch
 BuildRequires:  gstreamer1-devel >= 1.4.0
 BuildRequires:  gstreamer1-plugins-base-devel >= 1.4.0
 BuildRequires:  check
@@ -28,6 +30,8 @@ BuildRequires:  vo-amrwbenc-devel
 #BuildRequires:  vo-aacenc-devel
 BuildRequires:  libmpg123-devel
 BuildRequires: libusbx-devel
+# For autoreconf
+BuildRequires: libtool
 
 %description
 GStreamer is a streaming media framework, based on graphs of elements which
@@ -39,6 +43,9 @@ well enough, or the code is not of good enough quality.
 
 %prep
 %setup -q -n gst-plugins-bad-%{version}
+%patch1 -p1
+# For patch1
+autoreconf -ivf
 
 
 %build
@@ -91,6 +98,9 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Sat May 16 2015 Hans de Goede <j.w.r.degoede@gmail.com> - 1.4.5-2
+- Add a patch from upstream fixing a faad2 crash which crashes firefox (rf3636)
+
 * Sat May 16 2015 Hans de Goede <j.w.r.degoede@gmail.com> - 1.4.5-1
 - Rebase to new upstream release 1.4.5
 
