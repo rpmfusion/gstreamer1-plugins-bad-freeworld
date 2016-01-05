@@ -40,9 +40,9 @@ well enough, or the code is not of good enough quality.
 
 %prep
 %setup -q -n gst-plugins-bad-%{version}
-# hack to allow building against 1.6.0 as 1.6.1 is not yet in the buildroot
-sed -i 's/GST_REQ=1.6.1/GST_REQ=1.6.0/' configure
-sed -i 's/GSTPB_REQ=1.6.1/GSTPB_REQ=1.6.0/' configure
+# hack to allow building against 1.6.0 as 1.6.2 is not yet in the buildroot
+sed -i 's/GST_REQ=1.6.2/GST_REQ=1.6.0/' configure
+sed -i 's/GSTPB_REQ=1.6.2/GSTPB_REQ=1.6.0/' configure
 
 
 %build
