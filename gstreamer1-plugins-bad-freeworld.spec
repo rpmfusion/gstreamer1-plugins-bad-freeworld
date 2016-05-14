@@ -1,17 +1,17 @@
 # which plugins to actually build and install
 %global gstdirs gst/dvbsuboverlay gst/dvdspu gst/siren
-%global extdirs ext/dts ext/faad ext/libmms ext/mimic ext/mpeg2enc ext/mpg123 ext/mplex ext/rtmp ext/voamrwbenc ext/x265
+%global extdirs ext/dts ext/faad ext/libmms ext/mimic ext/mpeg2enc ext/mplex ext/rtmp ext/voamrwbenc ext/x265
 
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
-Version:        1.6.3
+Version:        1.8.1
 Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
 Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
-BuildRequires:  gstreamer1-devel >= 1.6.0
-BuildRequires:  gstreamer1-plugins-base-devel >= 1.6.0
+BuildRequires:  gstreamer1-devel >= 1.8.0
+BuildRequires:  gstreamer1-plugins-base-devel >= 1.8.0
 BuildRequires:  check
 BuildRequires:  gettext-devel
 BuildRequires:  libXt-devel
@@ -26,7 +26,6 @@ BuildRequires:  libmimic-devel
 BuildRequires:  librtmp-devel
 BuildRequires:  vo-amrwbenc-devel
 #BuildRequires:  vo-aacenc-devel
-BuildRequires:  libmpg123-devel
 BuildRequires: libusbx-devel
 BuildRequires: x265-devel
 
@@ -40,9 +39,9 @@ well enough, or the code is not of good enough quality.
 
 %prep
 %setup -q -n gst-plugins-bad-%{version}
-# hack to allow building against 1.6.0 as 1.6.3 is not yet in the buildroot
-sed -i 's/GST_REQ=1.6.3/GST_REQ=1.6.0/' configure
-sed -i 's/GSTPB_REQ=1.6.3/GSTPB_REQ=1.6.0/' configure
+# hack to allow building against 1.8.0 as 1.8.1 is not yet in the buildroot
+sed -i 's/GST_REQ=1.8.1/GST_REQ=1.8.0/' configure
+sed -i 's/GSTPB_REQ=1.8.1/GSTPB_REQ=1.8.0/' configure
 
 
 %build
@@ -87,7 +86,6 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 %{_libdir}/gstreamer-1.0/libgstmms.so
 %{_libdir}/gstreamer-1.0/libgstmimic.so
 %{_libdir}/gstreamer-1.0/libgstmpeg2enc.so
-%{_libdir}/gstreamer-1.0/libgstmpg123.so
 %{_libdir}/gstreamer-1.0/libgstmplex.so
 %{_libdir}/gstreamer-1.0/libgstrtmp.so
 #%%{_libdir}/gstreamer-1.0/libgstvoaacenc.so
@@ -96,6 +94,9 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Sat May 14 2016 Michael Kuhn <suraia@ikkoku.de> - 1.8.1-1
+- Update to 1.8.1.
+
 * Sat Jan 23 2016 Hans de Goede <j.w.r.degoede@gmail.com> - 1.6.3-1
 - Rebase to new upstream release 1.6.3
 
