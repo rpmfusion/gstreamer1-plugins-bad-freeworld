@@ -1,10 +1,10 @@
 # which plugins to actually build and install
 %global gstdirs gst/dvbsuboverlay gst/dvdspu gst/siren
-%global extdirs ext/dts ext/faad ext/libmms ext/mimic ext/mpeg2enc ext/mpg123 ext/mplex ext/rtmp ext/voamrwbenc ext/x265
+%global extdirs ext/dts ext/faad ext/libmms ext/mimic ext/mpeg2enc ext/mplex ext/rtmp ext/voamrwbenc ext/x265
 
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
-Version:        1.6.3
+Version:        1.8.1
 Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
@@ -26,7 +26,6 @@ BuildRequires:  libmimic-devel
 BuildRequires:  librtmp-devel
 BuildRequires:  vo-amrwbenc-devel
 #BuildRequires:  vo-aacenc-devel
-BuildRequires:  libmpg123-devel
 BuildRequires: libusbx-devel
 BuildRequires: x265-devel
 
@@ -72,7 +71,8 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %files
-%doc AUTHORS COPYING.LIB NEWS README RELEASE
+%doc AUTHORS NEWS README RELEASE
+%license COPYING.LIB
 # Take the whole dir for proper dir ownership (shared with other plugin pkgs)
 %{_datadir}/gstreamer-1.0
 
@@ -87,7 +87,6 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 %{_libdir}/gstreamer-1.0/libgstmms.so
 %{_libdir}/gstreamer-1.0/libgstmimic.so
 %{_libdir}/gstreamer-1.0/libgstmpeg2enc.so
-%{_libdir}/gstreamer-1.0/libgstmpg123.so
 %{_libdir}/gstreamer-1.0/libgstmplex.so
 %{_libdir}/gstreamer-1.0/libgstrtmp.so
 #%%{_libdir}/gstreamer-1.0/libgstvoaacenc.so
@@ -96,6 +95,9 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Wed May 18 2016 Hans de Goede <j.w.r.degoede@gmail.com> - 1.8.1-1
+- Rebase to new upstream release 1.8.1
+
 * Sat Jan 23 2016 Hans de Goede <j.w.r.degoede@gmail.com> - 1.6.3-1
 - Rebase to new upstream release 1.6.3
 
