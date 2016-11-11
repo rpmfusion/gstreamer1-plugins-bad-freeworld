@@ -4,8 +4,8 @@
 
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
-Version:        1.8.2
-Release:        2%{?dist}
+Version:        1.10.0
+Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
@@ -39,6 +39,8 @@ well enough, or the code is not of good enough quality.
 
 %prep
 %setup -q -n gst-plugins-bad-%{version}
+# Build against 1.9.2 as 1.10.0 is not yet in the stable Fedora repo
+sed -i 's/1.10.0/1.9.2/' configure
 
 
 %build
@@ -61,7 +63,7 @@ done
 %install
 for i in %{gstdirs} %{extdirs}; do
     pushd $i
-    make install V=2 DESTDIR=$RPM_BUILD_ROOT
+    %make_install V=2
     popd
 done
 rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
@@ -92,6 +94,9 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Fri Nov 11 2016 Hans de Goede <j.w.r.degoede@gmail.com> - 1.10.0-1
+- Rebase to new upstream release 1.10.0
+
 * Tue Nov 08 2016 Sérgio Basto <sergio@serjux.com> - 1.8.2-2
 - Rebuild for x265-2.1
 
