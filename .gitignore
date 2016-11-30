@@ -1,7 +1,2 @@
-gst-plugins-bad-1.4.5.tar.xz
-gst-plugins-bad-1.6.1.tar.xz
-gst-plugins-bad-1.6.2.tar.xz
-gst-plugins-bad-1.6.3.tar.xz
-gst-plugins-bad-1.8.1.tar.xz
-gst-plugins-bad-1.8.2.tar.xz
-/gst-plugins-bad-1.10.0.tar.xz
+/gst-plugins-bad-*.tar.xz
+/gstreamer1-plugins-bad-freeworld-*.src.rpm
