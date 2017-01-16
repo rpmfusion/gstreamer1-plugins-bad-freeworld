@@ -1,17 +1,17 @@
 # which plugins to actually build and install
 %global gstdirs gst/dvbsuboverlay gst/dvdspu gst/siren
-%global extdirs ext/dts ext/faad ext/libmms ext/mimic ext/mpeg2enc ext/mplex ext/rtmp ext/voamrwbenc ext/x265
+%global extdirs ext/dts ext/faad ext/libmms ext/mpeg2enc ext/mplex ext/rtmp ext/voamrwbenc ext/x265
 
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
-Version:        1.10.2
-Release:        2%{?dist}
+Version:        1.11.1
+Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
 Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
-BuildRequires:  gstreamer1-devel >= 1.10.0
-BuildRequires:  gstreamer1-plugins-base-devel >= 1.10.0
+BuildRequires:  gstreamer1-devel >= 1.11.1
+BuildRequires:  gstreamer1-plugins-base-devel >= 1.11.1
 BuildRequires:  check
 BuildRequires:  gettext-devel
 BuildRequires:  libXt-devel
@@ -22,7 +22,6 @@ BuildRequires:  faad2-devel
 BuildRequires:  libmms-devel
 BuildRequires:  mjpegtools-devel >= 2.0.0
 BuildRequires:  twolame-devel
-BuildRequires:  libmimic-devel
 BuildRequires:  librtmp-devel
 BuildRequires:  vo-amrwbenc-devel
 #BuildRequires:  vo-aacenc-devel
@@ -83,7 +82,6 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 %{_libdir}/gstreamer-1.0/libgstdtsdec.so
 %{_libdir}/gstreamer-1.0/libgstfaad.so
 %{_libdir}/gstreamer-1.0/libgstmms.so
-%{_libdir}/gstreamer-1.0/libgstmimic.so
 %{_libdir}/gstreamer-1.0/libgstmpeg2enc.so
 %{_libdir}/gstreamer-1.0/libgstmplex.so
 %{_libdir}/gstreamer-1.0/libgstrtmp.so
@@ -93,6 +91,10 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Mon Jan 16 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.11.1-1
+- Update to 1.11.1
+- Remove libmimic bits as mimic is no longer included in the source
+
 * Tue Jan 03 2017 Dominik Mierzejewski <rpm@greysector.net> - 1.10.2-2
 - rebuild for x265
 
