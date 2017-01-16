@@ -1,11 +1,11 @@
 # which plugins to actually build and install
 %global gstdirs gst/dvbsuboverlay gst/dvdspu gst/siren
-%global extdirs ext/dts ext/faad ext/libmms ext/mpeg2enc ext/mplex ext/rtmp ext/voamrwbenc ext/x265
+%global extdirs ext/dts ext/faad ext/libde265 ext/libmms ext/mpeg2enc ext/mplex ext/rtmp ext/voamrwbenc ext/x265
 
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Version:        1.11.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
@@ -27,6 +27,7 @@ BuildRequires:  vo-amrwbenc-devel
 #BuildRequires:  vo-aacenc-devel
 BuildRequires:  libusbx-devel
 BuildRequires:  x265-devel
+BuildRequires:  libde265-devel
 
 %description
 GStreamer is a streaming media framework, based on graphs of elements which
@@ -79,6 +80,7 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 %{_libdir}/gstreamer-1.0/libgstsiren.so
 
 # Plugins with external dependencies
+%{_libdir}/gstreamer-1.0/libgstlibde265.so
 %{_libdir}/gstreamer-1.0/libgstdtsdec.so
 %{_libdir}/gstreamer-1.0/libgstfaad.so
 %{_libdir}/gstreamer-1.0/libgstmms.so
@@ -91,6 +93,9 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Mon Jan 16 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.11.1-2
+- enable libde265
+
 * Mon Jan 16 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.11.1-1
 - Update to 1.11.1
 - Remove libmimic bits as mimic is no longer included in the source
