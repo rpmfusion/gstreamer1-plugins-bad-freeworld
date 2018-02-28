@@ -4,8 +4,8 @@
 
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
-Version:        1.12.4
-Release:        3%{?dist}
+Version:        1.13.1
+Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
@@ -21,7 +21,6 @@ BuildRequires:  libdca-devel
 BuildRequires:  faad2-devel
 BuildRequires:  libmms-devel
 BuildRequires:  mjpegtools-devel >= 2.0.0
-BuildRequires:  twolame-devel
 BuildRequires:  librtmp-devel
 BuildRequires:  vo-amrwbenc-devel
 #BuildRequires:  vo-aacenc-devel
@@ -44,14 +43,19 @@ well enough, or the code is not of good enough quality.
 %build
 # Note we don't bother with disabling everything which is in Fedora, that
 # is unmaintainable, instead we selectively run make in subdirs
-%configure --disable-static \
+%configure \
+    --disable-silent-rules --disable-fatal-warnings \
+    --disable-static \
+    --disable-gtk-doc \
     --with-package-name="gst-plugins-bad 1.0 rpmfusion rpm" \
     --with-package-origin="http://rpmfusion.org/" \
     --enable-debug \
     --enable-experimental
+
 # Don't use rpath!
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
+
 for i in %{gstdirs} %{extdirs}; do
     pushd $i
     %make_build V=2
@@ -65,7 +69,8 @@ for i in %{gstdirs} %{extdirs}; do
     %make_install V=2
     popd
 done
-rm %{buildroot}%{_libdir}/gstreamer-1.0/*.la
+
+rm -fv %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 
 
 %files
@@ -80,7 +85,7 @@ rm %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 %{_libdir}/gstreamer-1.0/libgstsiren.so
 
 # Plugins with external dependencies
-%{_libdir}/gstreamer-1.0/libgstlibde265.so
+%{_libdir}/gstreamer-1.0/libgstde265.so
 %{_libdir}/gstreamer-1.0/libgstdtsdec.so
 %{_libdir}/gstreamer-1.0/libgstfaad.so
 %{_libdir}/gstreamer-1.0/libgstmms.so
@@ -93,6 +98,9 @@ rm %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Wed Feb 28 2018 Rex Dieter <rdieter@fedoraproject.org> - 1.13.1-1
+- 1.13.1
+
 * Wed Feb 28 2018 Nicolas Chauvet <kwizart@gmail.com> - 1.12.4-3
 - Rebuilt for x265
 
