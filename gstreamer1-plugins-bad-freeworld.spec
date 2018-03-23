@@ -4,7 +4,7 @@
 
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
-Version:        1.13.1
+Version:        1.14.0
 Release:        1%{?dist}
 License:        LGPLv2+
 Group:          Applications/Multimedia
@@ -98,6 +98,9 @@ rm -fv %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Fri Mar 23 2018 Rex Dieter <rdieter@fedoraproject.org> - 1.14.0-1
+- 1.14.0
+
 * Wed Feb 28 2018 Rex Dieter <rdieter@fedoraproject.org> - 1.13.1-1
 - 1.13.1
 
