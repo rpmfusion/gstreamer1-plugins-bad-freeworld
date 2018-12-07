@@ -1,20 +1,16 @@
 # which plugins to actually build and install
 %global gstdirs gst/dvbsuboverlay gst/dvdspu gst/siren
-%global extdirs ext/dts ext/faad ext/libde265 ext/libmms ext/mpeg2enc ext/mplex ext/rtmp ext/voamrwbenc ext/x265
+%global extdirs ext/dts ext/faad ext/libmms ext/mimic ext/mpeg2enc ext/mplex ext/rtmp ext/voamrwbenc ext/x265
 
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
-Version:        1.14.4
-Release:        2%{?dist}
+Version:        1.10.4
+Release:        3%{?dist}
 License:        LGPLv2+
-Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
 Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
-
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
-BuildRequires:  gstreamer1-devel >= %{version}
-BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
+BuildRequires:  gstreamer1-devel >= 1.10.0
+BuildRequires:  gstreamer1-plugins-base-devel >= 1.10.0
 BuildRequires:  check
 BuildRequires:  gettext-devel
 BuildRequires:  libXt-devel
@@ -24,12 +20,13 @@ BuildRequires:  libdca-devel
 BuildRequires:  faad2-devel
 BuildRequires:  libmms-devel
 BuildRequires:  mjpegtools-devel >= 2.0.0
+BuildRequires:  twolame-devel
+BuildRequires:  libmimic-devel
 BuildRequires:  librtmp-devel
 BuildRequires:  vo-amrwbenc-devel
 #BuildRequires:  vo-aacenc-devel
 BuildRequires:  libusbx-devel
 BuildRequires:  x265-devel
-BuildRequires:  libde265-devel
 
 %description
 GStreamer is a streaming media framework, based on graphs of elements which
@@ -40,28 +37,23 @@ well enough, or the code is not of good enough quality.
 
 
 %prep
-%autosetup -n gst-plugins-bad-%{version}
+%setup -q -n gst-plugins-bad-%{version}
 
 
 %build
 # Note we don't bother with disabling everything which is in Fedora, that
 # is unmaintainable, instead we selectively run make in subdirs
-%configure \
-    --disable-silent-rules --disable-fatal-warnings \
-    --disable-static \
-    --disable-gtk-doc \
+%configure --disable-static \
     --with-package-name="gst-plugins-bad 1.0 rpmfusion rpm" \
     --with-package-origin="http://rpmfusion.org/" \
     --enable-debug \
     --enable-experimental
-
 # Don't use rpath!
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
-
 for i in %{gstdirs} %{extdirs}; do
     pushd $i
-    %make_build V=2
+    make %{?_smp_mflags} V=2
     popd
 done
 
@@ -72,8 +64,7 @@ for i in %{gstdirs} %{extdirs}; do
     %make_install V=2
     popd
 done
-
-rm -fv %{buildroot}%{_libdir}/gstreamer-1.0/*.la
+rm -f $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/*.la
 
 
 %files
@@ -88,10 +79,10 @@ rm -fv %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 %{_libdir}/gstreamer-1.0/libgstsiren.so
 
 # Plugins with external dependencies
-%{_libdir}/gstreamer-1.0/libgstde265.so
 %{_libdir}/gstreamer-1.0/libgstdtsdec.so
 %{_libdir}/gstreamer-1.0/libgstfaad.so
 %{_libdir}/gstreamer-1.0/libgstmms.so
+%{_libdir}/gstreamer-1.0/libgstmimic.so
 %{_libdir}/gstreamer-1.0/libgstmpeg2enc.so
 %{_libdir}/gstreamer-1.0/libgstmplex.so
 %{_libdir}/gstreamer-1.0/libgstrtmp.so
@@ -101,84 +92,14 @@ rm -fv %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Thu Nov 22 2018 Antonio Trande <sagitter@fedoraproject.org> - 1.10.4-3
+- Rebuild for x265-2.9 on el7
+
 * Sun Nov 18 2018 Leigh Scott <leigh123linux@googlemail.com> - 1.14.4-2
 - Rebuild for new x265
 
-* Tue Oct 09 2018 Rex Dieter <rdieter@fedoraproject.org> - 1.14.4-1
-- 1.14.4
-
-* Thu Oct 04 2018 Sérgio Basto <sergio@serjux.com> - 1.14.3-2
-- Mass rebuild for x264 and/or x265
-
-* Tue Sep 18 2018 Leigh Scott <leigh123linux@googlemail.com> - 1.14.3-1
-- 1.14.3
-
-* Sat Aug 18 2018 Rex Dieter <rdieter@fedoraproject.org> - 1.14.2-1
-- 1.14.2
-
-* Thu Jul 26 2018 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1.14.1-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
-
-* Thu May 31 2018 Rex Dieter <rdieter@fedoraproject.org> - 1.14.1-1
-- 1.14.1
-
-* Fri Mar 23 2018 Rex Dieter <rdieter@fedoraproject.org> - 1.14.0-1
-- 1.14.0
-
-* Wed Feb 28 2018 Rex Dieter <rdieter@fedoraproject.org> - 1.13.1-1
-- 1.13.1
-
-* Wed Feb 28 2018 Nicolas Chauvet <kwizart@gmail.com> - 1.12.4-3
-- Rebuilt for x265
-
-* Sun Dec 31 2017 Sérgio Basto <sergio@serjux.com> - 1.12.4-2
-- Mass rebuild for x264 and x265
-
-* Mon Dec 11 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.12.4-1
-- Update to 1.12.4
-
-* Mon Oct 16 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.12.3-2
-- Rebuild for ffmpeg update
-
-* Thu Sep 21 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.12.3-1
-- Update to 1.12.3
-
-* Thu Aug 31 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 1.12.2-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
-
-* Tue Jul 18 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.12.2-1
-- Update to 1.12.2
-
-* Fri Jun 23 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.12.1-1
-- Update to 1.12.1
-
-* Wed May 17 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.12.0-2
-- Bump version for ffmpeg and x265 rebuild
-
-* Fri May 12 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.12.0-1
-- Update to 1.12.0
-
-* Sun Apr 30 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.11.90-2
-- Rebuild for x265 update
-
-* Tue Apr 18 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.11.90-1
-- Update to 1.11.90
-
-* Sun Mar 19 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 1.11.2-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
-
-* Mon Feb 27 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.11.2-1
-- Update to 1.11.2
-
-* Mon Jan 16 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.11.1-2
-- enable libde265
-
-* Mon Jan 16 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.11.1-1
-- Update to 1.11.1
-- Remove libmimic bits as mimic is no longer included in the source
-
-* Tue Jan 03 2017 Dominik Mierzejewski <rpm@greysector.net> - 1.10.2-2
-- rebuild for x265
+* Tue Aug 28 2018 Sérgio Basto <sergio@serjux.com> - 1.10.4-1
+- Update to 1.10.4
 
 * Wed Nov 30 2016 leigh scott <leigh123linux@googlemail.com> - 1.10.2-1
 - Update to 1.10.2
