@@ -5,7 +5,7 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Version:        1.15.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        LGPLv2+
 URL:            http://gstreamer.freedesktop.org/
 Source0:        %url/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
@@ -100,6 +100,9 @@ rm -fv %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Thu Feb 28 2019 Leigh Scott <leigh123linux@googlemail.com> - 1.15.1-2
+- Rebuild for new x265
+
 * Sat Feb 09 2019 Leigh Scott <leigh123linux@googlemail.com> - 1.15.1-1
 - 1.15.1
 
