@@ -4,14 +4,12 @@
 
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
-Version:        1.16.0
-Release:        3%{?dist}
+Version:        1.14.0
+Release:        1%{?dist}
 License:        LGPLv2+
+Group:          Applications/Multimedia
 URL:            http://gstreamer.freedesktop.org/
-Source0:        %url/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
-
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
+Source0:        http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
 BuildRequires:  check
@@ -100,51 +98,6 @@ rm -fv %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
-* Fri Aug 09 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1.16.0-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
-
-* Tue Jul 02 2019 Nicolas Chauvet <kwizart@gmail.com> - 1.16.0-2
-- Rebuilt for x265
-
-* Wed Apr 24 2019 Leigh Scott <leigh123linux@gmail.com> - 1.16.0-1
-- 1.16.0
-
-* Mon Mar 18 2019 Sérgio Basto <sergio@serjux.com> - 1.15.2-1
-- Update to 1.15.2
-
-* Mon Mar 04 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1.15.1-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
-
-* Thu Feb 28 2019 Leigh Scott <leigh123linux@googlemail.com> - 1.15.1-2
-- Rebuild for new x265
-
-* Sat Feb 09 2019 Leigh Scott <leigh123linux@googlemail.com> - 1.15.1-1
-- 1.15.1
-
-* Fri Dec 07 2018 Antonio Trande <sagitter@fedoraproject.org> - 1.14.4-3
-- Undo latest commit
-
-* Sun Nov 18 2018 Leigh Scott <leigh123linux@googlemail.com> - 1.14.4-2
-- Rebuild for new x265
-
-* Tue Oct 09 2018 Rex Dieter <rdieter@fedoraproject.org> - 1.14.4-1
-- 1.14.4
-
-* Thu Oct 04 2018 Sérgio Basto <sergio@serjux.com> - 1.14.3-2
-- Mass rebuild for x264 and/or x265
-
-* Tue Sep 18 2018 Leigh Scott <leigh123linux@googlemail.com> - 1.14.3-1
-- 1.14.3
-
-* Sat Aug 18 2018 Rex Dieter <rdieter@fedoraproject.org> - 1.14.2-1
-- 1.14.2
-
-* Thu Jul 26 2018 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1.14.1-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
-
-* Thu May 31 2018 Rex Dieter <rdieter@fedoraproject.org> - 1.14.1-1
-- 1.14.1
-
 * Fri Mar 23 2018 Rex Dieter <rdieter@fedoraproject.org> - 1.14.0-1
 - 1.14.0
 
@@ -288,4 +241,3 @@ rm -fv %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 
 * Sun Sep  9 2012 Hans de Goede <j.w.r.degoede@gmail.com> - 0.11.93-1
 - First version of gstreamer1-plugins-ugly for rpmfusion
-
