@@ -28,6 +28,7 @@ BuildRequires:  vo-amrwbenc-devel
 BuildRequires:  libusbx-devel
 BuildRequires:  x265-devel
 BuildRequires:  libde265-devel
+BuildRequires:  python3
 
 %description
 GStreamer is a streaming media framework, based on graphs of elements which
@@ -101,6 +102,7 @@ rm -fv %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 %changelog
 * Mon Sep 09 2019 Xavier Bachelot <xavier@bachelot.org> - 1.14.0-1.1
 - Backport spec changes from master.
+- Add BuildRequires: python3.
 
 * Fri Mar 23 2018 Rex Dieter <rdieter@fedoraproject.org> - 1.14.0-1
 - 1.14.0
