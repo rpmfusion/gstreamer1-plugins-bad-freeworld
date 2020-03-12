@@ -1,6 +1,10 @@
 # which plugins to actually build and install
 %global gstdirs gst/dvbsuboverlay gst/dvdspu gst/siren
+%ifnarch i686
 %global extdirs ext/dts ext/faad ext/libde265 ext/libmms ext/mpeg2enc ext/mplex ext/rtmp ext/voamrwbenc ext/x265
+%else
+%global extdirs ext/dts ext/faad ext/libmms ext/mpeg2enc ext/mplex ext/rtmp ext/voamrwbenc ext/x265
+%endif
 
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
@@ -28,7 +32,9 @@ BuildRequires:  vo-amrwbenc-devel
 #BuildRequires:  vo-aacenc-devel
 BuildRequires:  libusbx-devel
 BuildRequires:  x265-devel
+%ifnarch i686
 BuildRequires:  libde265-devel
+%endif
 
 %description
 GStreamer is a streaming media framework, based on graphs of elements which
@@ -87,7 +93,9 @@ rm -fv %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 %{_libdir}/gstreamer-1.0/libgstsiren.so
 
 # Plugins with external dependencies
+%ifnarch i686
 %{_libdir}/gstreamer-1.0/libgstde265.so
+%endif
 %{_libdir}/gstreamer-1.0/libgstdtsdec.so
 %{_libdir}/gstreamer-1.0/libgstfaad.so
 %{_libdir}/gstreamer-1.0/libgstmms.so
