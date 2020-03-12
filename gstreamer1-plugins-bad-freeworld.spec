@@ -17,7 +17,6 @@ BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
 BuildRequires:  check
 BuildRequires:  gettext-devel
 BuildRequires:  libXt-devel
-BuildRequires:  gtk-doc
 BuildRequires:  orc-devel
 BuildRequires:  libdca-devel
 BuildRequires:  faad2-devel
