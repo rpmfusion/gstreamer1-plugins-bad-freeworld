@@ -4,11 +4,11 @@
 
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
-Version:        1.14.0
-Release:        1%{?dist}.1
+Version:        1.16.1
+Release:        1%{?dist}
 License:        LGPLv2+
-URL:            http://gstreamer.freedesktop.org/
-Source0:        %url/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
+URL:            https://gstreamer.freedesktop.org/
+Source0:        %{url}/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
 
 BuildRequires:  gcc-c++
 BuildRequires:  gstreamer1-devel >= %{version}
@@ -100,6 +100,9 @@ rm -fv %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Fri May 08 2020 Xavier Bachelot <xavier@bachelot.org> - 1.16.1-1
+- Update to 1.16.1 to match EL8.2
+
 * Mon Sep 09 2019 Xavier Bachelot <xavier@bachelot.org> - 1.14.0-1.1
 - Backport spec changes from master.
 - Add BuildRequires: python3.
