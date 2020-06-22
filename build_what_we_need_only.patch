@@ -1,0 +1,114 @@
+--- a/ext/meson.build
++++ b/ext/meson.build
+@@ -1,69 +1,9 @@
+-subdir('assrender')
+-subdir('aom')
+-subdir('avtp')
+-subdir('bs2b')
+-subdir('bz2')
+-subdir('chromaprint')
+-subdir('closedcaption')
+-subdir('colormanagement')
+-subdir('curl')
+-subdir('dash')
+-subdir('dc1394')
+-subdir('directfb')
+-subdir('dtls')
+ subdir('dts')
+-subdir('faac')
+ subdir('faad')
+-subdir('fdkaac')
+-subdir('flite')
+-subdir('fluidsynth')
+-subdir('gme')
+-subdir('gsm')
+-subdir('hls')
+-subdir('iqa')
+-subdir('kate')
+-subdir('ladspa')
+ subdir('libde265')
+ subdir('libmms')
+-subdir('lv2')
+-subdir('mdns')
+-subdir('modplug')
+ subdir('mpeg2enc')
+ subdir('mplex')
+-subdir('musepack')
+-subdir('neon')
+-subdir('ofa')
+-subdir('openal')
+-subdir('opencv')
+-subdir('openexr')
+-subdir('openh264')
+-subdir('openjpeg')
+-subdir('openmpt')
+-subdir('openni2')
+-subdir('opus')
+-subdir('resindvd')
+-subdir('rsvg')
+ subdir('rtmp')
+-subdir('sbc')
+-subdir('sctp')
+-subdir('smoothstreaming')
+-subdir('sndfile')
+-subdir('soundtouch')
+-subdir('spandsp')
+-subdir('srt')
+-subdir('srtp')
+-subdir('svthevcenc')
+-subdir('teletextdec')
+-subdir('ttml')
+-subdir('voaacenc')
+ subdir('voamrwbenc')
+-subdir('vulkan')
+-subdir('wayland')
+-subdir('webrtc')
+-subdir('webrtcdsp')
+-subdir('webp')
+-subdir('wildmidi')
+-subdir('wpe')
+ subdir('x265')
+-subdir('zxing')
+-subdir('zbar')
+
+--- a/gst/meson.build
++++ b/gst/meson.build
+@@ -1,18 +1,4 @@
+-foreach plugin : ['accurip', 'adpcmdec', 'adpcmenc', 'aiff', 'asfmux',
+-                  'audiobuffersplit', 'audiofxbad', 'audiomixmatrix',
+-                  'audiolatency', 'audiovisualizers', 'autoconvert', 'bayer',
+-                  'camerabin2', 'coloreffects', 'debugutils', 'dvbsubenc',
+-                  'dvbsuboverlay', 'dvdspu', 'faceoverlay', 'festival',
+-                  'fieldanalysis', 'freeverb', 'frei0r', 'gaudieffects', 'gdp',
+-                  'geometrictransform', 'id3tag', 'inter', 'interlace',
+-                  'ivfparse', 'ivtc', 'jp2kdecimator', 'jpegformat', 'librfb',
+-                  'midi', 'mpegdemux', 'mpegpsmux', 'mpegtsdemux', 'mpegtsmux',
+-                  'mxf', 'netsim', 'onvif', 'pcapparse', 'pnm', 'proxy',
+-                  'rawparse', 'removesilence', 'rist', 'rtmp2', 'rtp', 'sdp',
+-                  'segmentclip', 'siren', 'smooth', 'speed', 'subenc', 'switchbin',
+-                  'timecode', 'transcode', 'videofilters',
+-                  'videoframe_audiolevel', 'videoparsers', 'videosignal',
+-                  'vmnc', 'y4m']
++foreach plugin : ['dvbsuboverlay', 'dvdspu', 'siren']
+   if not get_option(plugin).disabled()
+     subdir(plugin)
+   endif
+
+--- a/meson.build
++++ b/meson.build
+@@ -437,14 +437,9 @@
+   plugins_pkgconfig_install_dir = disabler()
+ endif
+ 
+-subdir('gst-libs')
+ subdir('gst')
+-subdir('sys')
+ subdir('ext')
+-subdir('tests')
+ subdir('data')
+-subdir('tools')
+-subdir('pkgconfig')
+ 
+ # xgettext is optional (on Windows for instance)
+ if find_program('xgettext', required : get_option('nls')).found()
+

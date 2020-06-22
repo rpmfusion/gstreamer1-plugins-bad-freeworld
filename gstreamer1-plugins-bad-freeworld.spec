@@ -1,21 +1,17 @@
-# which plugins to actually build and install
-%global gstdirs gst/dvbsuboverlay gst/dvdspu gst/siren
-%global extdirs ext/dts ext/faad ext/libde265 ext/libmms ext/mpeg2enc ext/mplex ext/rtmp ext/voamrwbenc ext/x265
-
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
-Version:        1.16.2
-Release:        6%{?dist}
+Version:        1.17.1
+Release:        1%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
+Patch0:         build_what_we_need_only.patch
 
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
+BuildRequires:  gcc-objc++
+BuildRequires:  meson
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
 BuildRequires:  check
-BuildRequires:  gettext-devel
 BuildRequires:  libXt-devel
 BuildRequires:  orc-devel
 BuildRequires:  libdca-devel
@@ -38,40 +34,26 @@ well enough, or the code is not of good enough quality.
 
 
 %prep
-%autosetup -n gst-plugins-bad-%{version}
+%autosetup -p1 -n gst-plugins-bad-%{version}
 
 
 %build
 # Note we don't bother with disabling everything which is in Fedora, that
 # is unmaintainable, instead we selectively run make in subdirs
-%configure \
-    --disable-silent-rules --disable-fatal-warnings \
-    --disable-static \
-    --disable-gtk-doc \
-    --with-package-name="gst-plugins-bad 1.0 rpmfusion rpm" \
-    --with-package-origin="http://rpmfusion.org/" \
-    --enable-debug \
-    --enable-experimental
+%meson \
+    -D package-name='gst-libav 1.0 rpmfusion rpm' \
+    -D package-origin='http://rpmfusion.org/' \
+    -D doc=disabled \
+    -D introspection=disabled \
+    -D examples=disabled \
+    -D nls=disabled
 
-# Don't use rpath!
-sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
-sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 
-for i in %{gstdirs} %{extdirs}; do
-    pushd $i
-    %make_build V=2
-    popd
-done
+%meson_build
 
 
 %install
-for i in %{gstdirs} %{extdirs}; do
-    pushd $i
-    %make_install V=2
-    popd
-done
-
-rm -fv %{buildroot}%{_libdir}/gstreamer-1.0/*.la
+%meson_install
 
 
 %files
@@ -99,6 +81,9 @@ rm -fv %{buildroot}%{_libdir}/gstreamer-1.0/*.la
 
 
 %changelog
+* Mon Jun 22 2020 Leigh Scott <leigh123linux@gmail.com> - 1.17.1-1
+- 1.17.1
+
 * Sun May 31 2020 Leigh Scott <leigh123linux@gmail.com> - 1.16.2-6
 - Rebuild for new x265 version
 
