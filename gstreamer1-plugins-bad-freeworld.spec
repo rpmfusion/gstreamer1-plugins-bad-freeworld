@@ -55,6 +55,7 @@ well enough, or the code is not of good enough quality.
 %install
 %meson_install
 
+rm -rf %{buildroot}%{_datadir}/gstreamer-1.0/encoding-profiles/
 
 %files
 %doc AUTHORS NEWS README RELEASE
