@@ -41,7 +41,7 @@ well enough, or the code is not of good enough quality.
 # Note we don't bother with disabling everything which is in Fedora, that
 # is unmaintainable, instead we selectively run make in subdirs
 %meson \
-    -D package-name='gst-libav 1.0 rpmfusion rpm' \
+    -D package-name='gst-plugins-bad 1.0 rpmfusion rpm' \
     -D package-origin='http://rpmfusion.org/' \
     -D doc=disabled \
     -D introspection=disabled \
