@@ -1,7 +1,7 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
-Version:        1.17.1
-Release:        2%{?dist}
+Version:        1.17.2
+Release:        1%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
@@ -82,6 +82,9 @@ rm -rf %{buildroot}%{_datadir}/gstreamer-1.0/encoding-profiles/
 
 
 %changelog
+* Wed Jul 08 2020 Leigh Scott <leigh123linux@gmail.com> - 1.17.2-1
+- 1.17.2
+
 * Mon Jun 22 2020 Leigh Scott <leigh123linux@gmail.com> - 1.17.1-2
 - Add BuildRequires gcc-objc++
 
