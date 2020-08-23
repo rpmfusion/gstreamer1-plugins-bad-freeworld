@@ -1,5 +1,6 @@
---- a/ext/meson.build
-+++ b/ext/meson.build
+diff -uNrp a/ext/meson.build b/ext/meson.build
+--- a/ext/meson.build	2020-08-20 16:14:26.000000000 +0100
++++ b/ext/meson.build	2020-08-23 14:38:26.171082319 +0100
 @@ -1,69 +1,9 @@
 -subdir('assrender')
 -subdir('aom')
@@ -70,9 +71,9 @@
  subdir('x265')
 -subdir('zxing')
 -subdir('zbar')
-
---- a/gst/meson.build
-+++ b/gst/meson.build
+diff -uNrp a/gst/meson.build b/gst/meson.build
+--- a/gst/meson.build	2020-08-20 16:14:27.000000000 +0100
++++ b/gst/meson.build	2020-08-23 14:38:26.172082317 +0100
 @@ -1,18 +1,4 @@
 -foreach plugin : ['accurip', 'adpcmdec', 'adpcmenc', 'aiff', 'asfmux',
 -                  'audiobuffersplit', 'audiofxbad', 'audiomixmatrix',
@@ -93,10 +94,10 @@
    if not get_option(plugin).disabled()
      subdir(plugin)
    endif
-
---- a/meson.build
-+++ b/meson.build
-@@ -437,14 +437,9 @@
+diff -uNrp a/meson.build b/meson.build
+--- a/meson.build	2020-08-20 16:14:27.000000000 +0100
++++ b/meson.build	2020-08-23 14:38:26.173082315 +0100
+@@ -461,14 +461,9 @@ if get_option('default_library') == 'sha
    plugins_pkgconfig_install_dir = disabler()
  endif
  
@@ -109,6 +110,5 @@
 -subdir('tools')
 -subdir('pkgconfig')
  
- # xgettext is optional (on Windows for instance)
- if find_program('xgettext', required : get_option('nls')).found()
-
+ if have_orcc
+   update_orc_dist_files = find_program('scripts/update-orc-dist-files.py')
