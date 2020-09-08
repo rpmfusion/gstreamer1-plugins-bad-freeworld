@@ -1,7 +1,7 @@
 diff -uNrp a/ext/meson.build b/ext/meson.build
 --- a/ext/meson.build	2020-08-20 16:14:26.000000000 +0100
 +++ b/ext/meson.build	2020-08-23 14:38:26.171082319 +0100
-@@ -1,69 +1,9 @@
+@@ -1,69 +1,10 @@
 -subdir('assrender')
 -subdir('aom')
 -subdir('avtp')
@@ -56,7 +56,7 @@ diff -uNrp a/ext/meson.build b/ext/meson.build
 -subdir('spandsp')
 -subdir('srt')
 -subdir('srtp')
--subdir('svthevcenc')
+ subdir('svthevcenc')
 -subdir('teletextdec')
 -subdir('ttml')
 -subdir('voaacenc')
@@ -71,6 +71,7 @@ diff -uNrp a/ext/meson.build b/ext/meson.build
  subdir('x265')
 -subdir('zxing')
 -subdir('zbar')
+
 diff -uNrp a/gst/meson.build b/gst/meson.build
 --- a/gst/meson.build	2020-08-20 16:14:27.000000000 +0100
 +++ b/gst/meson.build	2020-08-23 14:38:26.172082317 +0100
@@ -97,7 +98,16 @@ diff -uNrp a/gst/meson.build b/gst/meson.build
 diff -uNrp a/meson.build b/meson.build
 --- a/meson.build	2020-08-20 16:14:27.000000000 +0100
 +++ b/meson.build	2020-08-23 14:38:26.173082315 +0100
-@@ -461,14 +461,9 @@ if get_option('default_library') == 'sha
+@@ -279,6 +279,8 @@
+     fallback : ['gst-plugins-base', 'app_dep'])
+ gstaudio_dep = dependency('gstreamer-audio-1.0', version : gst_req,
+     fallback : ['gst-plugins-base', 'audio_dep'])
++gstcodecparsers_dep = dependency('gstreamer-codecparsers-1.0', version : gst_req,
++    fallback : ['gst-plugins-bad', 'codecparsers_dep'])
+ gstfft_dep = dependency('gstreamer-fft-1.0', version : gst_req,
+     fallback : ['gst-plugins-base', 'fft_dep'])
+ gstriff_dep = dependency('gstreamer-riff-1.0', version : gst_req,
+@@ -461,14 +463,9 @@
    plugins_pkgconfig_install_dir = disabler()
  endif
  
@@ -112,3 +122,4 @@ diff -uNrp a/meson.build b/meson.build
  
  if have_orcc
    update_orc_dist_files = find_program('scripts/update-orc-dist-files.py')
+

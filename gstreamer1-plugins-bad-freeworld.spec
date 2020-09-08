@@ -1,7 +1,7 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Version:        1.17.90
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
@@ -11,6 +11,7 @@ BuildRequires:  gcc-objc++
 BuildRequires:  meson
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
+BuildRequires:  gstreamer1-plugins-bad-free-devel >= %{version}
 BuildRequires:  check
 BuildRequires:  libXt-devel
 BuildRequires:  orc-devel
@@ -19,6 +20,7 @@ BuildRequires:  faad2-devel
 BuildRequires:  libmms-devel
 BuildRequires:  mjpegtools-devel >= 2.0.0
 BuildRequires:  librtmp-devel
+BuildRequires:  svt-hevc-devel
 BuildRequires:  vo-amrwbenc-devel
 #BuildRequires:  vo-aacenc-devel
 BuildRequires:  libusbx-devel
@@ -76,12 +78,16 @@ rm -rf %{buildroot}%{_datadir}/gstreamer-1.0/encoding-profiles/
 %{_libdir}/gstreamer-1.0/libgstmpeg2enc.so
 %{_libdir}/gstreamer-1.0/libgstmplex.so
 %{_libdir}/gstreamer-1.0/libgstrtmp.so
+%{_libdir}/gstreamer-1.0/libgstsvthevcenc.so
 #%%{_libdir}/gstreamer-1.0/libgstvoaacenc.so
 %{_libdir}/gstreamer-1.0/libgstvoamrwbenc.so
 %{_libdir}/gstreamer-1.0/libgstx265.so
 
 
 %changelog
+* Tue Sep  8 2020 Leigh Scott <leigh123linux@gmail.com> - 1.17.90-2
+- Enable svt-hevc
+
 * Sun Aug 23 2020 Leigh Scott <leigh123linux@gmail.com> - 1.17.90-1
 - 1.17.90
 
