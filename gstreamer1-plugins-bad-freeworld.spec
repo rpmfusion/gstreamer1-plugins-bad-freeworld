@@ -11,10 +11,7 @@ BuildRequires:  gcc-objc++
 BuildRequires:  meson
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
-%ifarch x86_64
 BuildRequires:  gstreamer1-plugins-bad-free-devel >= %{version}
-BuildRequires:  svt-hevc-devel
-%endif
 BuildRequires:  check
 BuildRequires:  libXt-devel
 BuildRequires:  orc-devel
@@ -23,6 +20,9 @@ BuildRequires:  faad2-devel
 BuildRequires:  libmms-devel
 BuildRequires:  mjpegtools-devel >= 2.0.0
 BuildRequires:  librtmp-devel
+%ifarch x86_64
+BuildRequires:  svt-hevc-devel
+%endif
 BuildRequires:  vo-amrwbenc-devel
 #BuildRequires:  vo-aacenc-devel
 BuildRequires:  libusbx-devel
@@ -50,6 +50,9 @@ well enough, or the code is not of good enough quality.
     -D doc=disabled \
     -D introspection=disabled \
     -D examples=disabled \
+%ifnarch x86_64
+    -D svthevcenc=disabled \
+%endif
     -D nls=disabled
 
 
@@ -80,7 +83,9 @@ rm -rf %{buildroot}%{_datadir}/gstreamer-1.0/encoding-profiles/
 %{_libdir}/gstreamer-1.0/libgstmpeg2enc.so
 %{_libdir}/gstreamer-1.0/libgstmplex.so
 %{_libdir}/gstreamer-1.0/libgstrtmp.so
+%ifarch x86_64
 %{_libdir}/gstreamer-1.0/libgstsvthevcenc.so
+%endif
 #%%{_libdir}/gstreamer-1.0/libgstvoaacenc.so
 %{_libdir}/gstreamer-1.0/libgstvoamrwbenc.so
 %{_libdir}/gstreamer-1.0/libgstx265.so
