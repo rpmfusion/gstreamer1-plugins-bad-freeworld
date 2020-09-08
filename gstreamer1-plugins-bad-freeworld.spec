@@ -11,7 +11,10 @@ BuildRequires:  gcc-objc++
 BuildRequires:  meson
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
+%ifarch x86_64
 BuildRequires:  gstreamer1-plugins-bad-free-devel >= %{version}
+BuildRequires:  svt-hevc-devel
+%endif
 BuildRequires:  check
 BuildRequires:  libXt-devel
 BuildRequires:  orc-devel
@@ -20,7 +23,6 @@ BuildRequires:  faad2-devel
 BuildRequires:  libmms-devel
 BuildRequires:  mjpegtools-devel >= 2.0.0
 BuildRequires:  librtmp-devel
-BuildRequires:  svt-hevc-devel
 BuildRequires:  vo-amrwbenc-devel
 #BuildRequires:  vo-aacenc-devel
 BuildRequires:  libusbx-devel
@@ -86,7 +88,7 @@ rm -rf %{buildroot}%{_datadir}/gstreamer-1.0/encoding-profiles/
 
 %changelog
 * Tue Sep  8 2020 Leigh Scott <leigh123linux@gmail.com> - 1.17.90-2
-- Enable svt-hevc
+- Enable svt-hevc for x86_64
 
 * Sun Aug 23 2020 Leigh Scott <leigh123linux@gmail.com> - 1.17.90-1
 - 1.17.90
