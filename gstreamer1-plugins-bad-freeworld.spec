@@ -1,7 +1,7 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
-Version:        1.17.90
-Release:        2%{?dist}
+Version:        1.18.0
+Release:        1%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
@@ -92,6 +92,9 @@ rm -rf %{buildroot}%{_datadir}/gstreamer-1.0/encoding-profiles/
 
 
 %changelog
+* Wed Sep  9 2020 Leigh Scott <leigh123linux@gmail.com> - 1.18.0-1
+- 1.18.0
+
 * Tue Sep  8 2020 Leigh Scott <leigh123linux@gmail.com> - 1.17.90-2
 - Enable svt-hevc for x86_64
 
