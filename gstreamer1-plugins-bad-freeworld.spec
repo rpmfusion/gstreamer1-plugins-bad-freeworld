@@ -1,7 +1,7 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Version:        1.18.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
@@ -92,6 +92,9 @@ rm -rf %{buildroot}%{_datadir}/gstreamer-1.0/encoding-profiles/
 
 
 %changelog
+* Tue Oct 27 2020 Leigh Scott <leigh123linux@gmail.com> - 1.18.0-2
+- Rebuild for libde256
+
 * Wed Sep  9 2020 Leigh Scott <leigh123linux@gmail.com> - 1.18.0-1
 - 1.18.0
 
