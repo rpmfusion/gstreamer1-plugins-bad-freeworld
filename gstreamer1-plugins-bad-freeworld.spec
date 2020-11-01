@@ -66,7 +66,7 @@ rm -rf %{buildroot}%{_datadir}/gstreamer-1.0/encoding-profiles/
 
 %files
 %doc AUTHORS NEWS README RELEASE
-%license COPYING.LIB
+%license COPYING
 # Take the whole dir for proper dir ownership (shared with other plugin pkgs)
 %{_datadir}/gstreamer-1.0
 
