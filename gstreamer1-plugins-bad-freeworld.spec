@@ -1,7 +1,7 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Version:        1.18.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
@@ -22,12 +22,16 @@ BuildRequires:  mjpegtools-devel >= 2.0.0
 BuildRequires:  librtmp-devel
 %ifarch x86_64
 BuildRequires:  svt-hevc-devel
+Provides:  gstreamer1-svt-hevc = %{version}-%{release}
+Provides:  gstreamer1-svt-hevc%{?_isa} = %{version}-%{release}
+Obsoletes: gstreamer1-svt-hevc < %{version}-%{release}
 %endif
 BuildRequires:  vo-amrwbenc-devel
 #BuildRequires:  vo-aacenc-devel
 BuildRequires:  libusbx-devel
 BuildRequires:  x265-devel
 BuildRequires:  libde265-devel
+
 
 %description
 GStreamer is a streaming media framework, based on graphs of elements which
@@ -92,6 +96,9 @@ rm -rf %{buildroot}%{_datadir}/gstreamer-1.0/encoding-profiles/
 
 
 %changelog
+* Sat Feb 06 2021 Leigh Scott <leigh123linux@gmail.com> - 1.18.2-3
+- Add Obsoletes gstreamer1-svt-hevc
+
 * Wed Feb 03 2021 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1.18.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
