@@ -1,7 +1,7 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Version:        1.18.4
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
@@ -96,6 +96,9 @@ rm -rf %{buildroot}%{_datadir}/gstreamer-1.0/encoding-profiles/
 
 
 %changelog
+* Sat Apr 17 2021 Leigh Scott <leigh123linux@gmail.com> - 1.18.4-3
+- Rebuild for new mjpegtools
+
 * Wed Apr 14 2021 Leigh Scott <leigh123linux@gmail.com> - 1.18.4-2
 - Rebuild for new x265
 
