@@ -1,5 +1,6 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
+Epoch:          1
 Version:        1.19.1
 Release:        1%{?dist}
 License:        LGPLv2+
