@@ -1,5 +1,6 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
+Epoch:          1
 Version:        1.18.4
 Release:        4%{?dist}
 License:        LGPLv2+
@@ -96,7 +97,7 @@ rm -rf %{buildroot}%{_datadir}/gstreamer-1.0/encoding-profiles/
 
 
 %changelog
-* Fri Jun 25 2021 Leigh Scott <leigh123linux@gmail.com> - 1.18.4-4
+* Fri Jun 25 2021 Leigh Scott <leigh123linux@gmail.com> - 1:1.18.4-4
 - Epoch back to 1.18.4
 
 * Tue Jun 08 2021 Leigh Scott <leigh123linux@gmail.com> - 1.19.1-1
