@@ -1,7 +1,7 @@
-diff -uNrp a/ext/meson.build b/ext/meson.build
---- a/ext/meson.build	2021-06-01 00:14:25.000000000 +0100
-+++ b/ext/meson.build	2021-06-08 13:36:03.843005732 +0100
-@@ -1,75 +1,10 @@
+--- ./ext/meson.build.orig	2021-09-23 01:34:51.166608300 +0100
++++ ./ext/meson.build	2021-10-09 17:52:41.117762463 +0100
+@@ -1,76 +1,10 @@
+-subdir('aes')
 -subdir('assrender')
 -subdir('aom')
 -subdir('avtp')
