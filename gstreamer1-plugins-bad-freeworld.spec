@@ -68,7 +68,6 @@ well enough, or the code is not of good enough quality.
 %meson_install
 
 rm -rf %{buildroot}%{_datadir}/gstreamer-1.0/encoding-profiles/
-rm -rf %{buildroot}%{_libdir}/pkgconfig/gstreamer-plugins-bad-1.0.pc
 
 %files
 %doc AUTHORS NEWS README RELEASE
