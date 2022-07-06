@@ -1,12 +1,8 @@
-
-# gstreamer1.prov is broken and hangs, workarround it
-%global __gstreamer1_provides %{nil}
-
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Epoch:          1
 Version:        1.19.1
-Release:        3%{?dist}
+Release:        2%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
@@ -70,9 +66,9 @@ well enough, or the code is not of good enough quality.
 
 %install
 %meson_install
-rm -rf %{buildroot}%{_datadir}/gstreamer-1.0/encoding-profiles/
-rm -rf %{buildroot}%{_libdir}/pkgconfig
 
+rm -rf %{buildroot}%{_datadir}/gstreamer-1.0/encoding-profiles/
+rm -rf %{buildroot}%{_libdir}/pkgconfig/gstreamer-plugins-bad-1.0.pc
 
 %files
 %doc AUTHORS NEWS README RELEASE
@@ -102,9 +98,6 @@ rm -rf %{buildroot}%{_libdir}/pkgconfig
 
 
 %changelog
-* Sat Oct 09 2021 Sérgio Basto <sergio@serjux.com> - 1:1.19.1-3
-- gstreamer1.prov is broken and hangs, workarround it
-
 * Mon Aug 02 2021 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1:1.19.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
