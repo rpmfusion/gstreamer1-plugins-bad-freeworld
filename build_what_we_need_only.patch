@@ -1,7 +1,7 @@
 diff -uNrp a/ext/meson.build b/ext/meson.build
---- a/ext/meson.build	2021-06-01 00:14:25.000000000 +0100
-+++ b/ext/meson.build	2021-06-08 13:36:03.843005732 +0100
-@@ -1,75 +1,10 @@
+--- a/ext/meson.build	2020-08-20 16:14:26.000000000 +0100
++++ b/ext/meson.build	2020-08-23 14:38:26.171082319 +0100
+@@ -1,69 +1,10 @@
 -subdir('assrender')
 -subdir('aom')
 -subdir('avtp')
@@ -22,14 +22,11 @@ diff -uNrp a/ext/meson.build b/ext/meson.build
 -subdir('flite')
 -subdir('fluidsynth')
 -subdir('gme')
--subdir('gs')
 -subdir('gsm')
 -subdir('hls')
 -subdir('iqa')
--subdir('isac')
 -subdir('kate')
 -subdir('ladspa')
--subdir('ldac')
  subdir('libde265')
  subdir('libmms')
 -subdir('lv2')
@@ -40,9 +37,7 @@ diff -uNrp a/ext/meson.build b/ext/meson.build
 -subdir('musepack')
 -subdir('neon')
 -subdir('ofa')
--subdir('onnx')
 -subdir('openal')
--subdir('openaptx')
 -subdir('opencv')
 -subdir('openexr')
 -subdir('openh264')
@@ -50,7 +45,6 @@ diff -uNrp a/ext/meson.build b/ext/meson.build
 -subdir('openmpt')
 -subdir('openni2')
 -subdir('opus')
--subdir('qroverlay')
 -subdir('resindvd')
 -subdir('rsvg')
  subdir('rtmp')
@@ -77,14 +71,15 @@ diff -uNrp a/ext/meson.build b/ext/meson.build
  subdir('x265')
 -subdir('zxing')
 -subdir('zbar')
+
 diff -uNrp a/gst/meson.build b/gst/meson.build
---- a/gst/meson.build	2021-06-01 00:14:25.000000000 +0100
-+++ b/gst/meson.build	2021-06-08 13:30:36.516757191 +0100
+--- a/gst/meson.build	2020-08-20 16:14:27.000000000 +0100
++++ b/gst/meson.build	2020-08-23 14:38:26.172082317 +0100
 @@ -1,18 +1,4 @@
 -foreach plugin : ['accurip', 'adpcmdec', 'adpcmenc', 'aiff', 'asfmux',
 -                  'audiobuffersplit', 'audiofxbad', 'audiomixmatrix',
 -                  'audiolatency', 'audiovisualizers', 'autoconvert', 'bayer',
--                  'camerabin2', 'codecalpha', 'coloreffects', 'debugutils', 'dvbsubenc',
+-                  'camerabin2', 'coloreffects', 'debugutils', 'dvbsubenc',
 -                  'dvbsuboverlay', 'dvdspu', 'faceoverlay', 'festival',
 -                  'fieldanalysis', 'freeverb', 'frei0r', 'gaudieffects', 'gdp',
 -                  'geometrictransform', 'id3tag', 'inter', 'interlace',
@@ -101,9 +96,9 @@ diff -uNrp a/gst/meson.build b/gst/meson.build
      subdir(plugin)
    endif
 diff -uNrp a/meson.build b/meson.build
---- a/meson.build	2021-06-01 00:14:25.000000000 +0100
-+++ b/meson.build	2021-06-08 13:32:38.208390976 +0100
-@@ -284,6 +284,8 @@ gstapp_dep = dependency('gstreamer-app-1
+--- a/meson.build	2020-08-20 16:14:27.000000000 +0100
++++ b/meson.build	2020-08-23 14:38:26.173082315 +0100
+@@ -279,6 +279,8 @@
      fallback : ['gst-plugins-base', 'app_dep'])
  gstaudio_dep = dependency('gstreamer-audio-1.0', version : gst_req,
      fallback : ['gst-plugins-base', 'audio_dep'])
@@ -112,9 +107,9 @@ diff -uNrp a/meson.build b/meson.build
  gstfft_dep = dependency('gstreamer-fft-1.0', version : gst_req,
      fallback : ['gst-plugins-base', 'fft_dep'])
  gstriff_dep = dependency('gstreamer-riff-1.0', version : gst_req,
-@@ -484,13 +486,9 @@ pkgconfig.generate(
-   description : 'Streaming media framework, bad plugins libraries',
- )
+@@ -461,14 +463,9 @@
+   plugins_pkgconfig_install_dir = disabler()
+ endif
  
 -subdir('gst-libs')
  subdir('gst')
@@ -123,6 +118,8 @@ diff -uNrp a/meson.build b/meson.build
 -subdir('tests')
  subdir('data')
 -subdir('tools')
+-subdir('pkgconfig')
  
  if have_orcc
    update_orc_dist_files = find_program('scripts/update-orc-dist-files.py')
+
