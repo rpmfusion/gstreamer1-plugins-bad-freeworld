@@ -5,8 +5,8 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Epoch:          1
-Version:        1.19.2
-Release:        1%{?dist}
+Version:        1.19.1
+Release:        3%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
@@ -25,8 +25,6 @@ BuildRequires:  faad2-devel
 BuildRequires:  libmms-devel
 BuildRequires:  mjpegtools-devel >= 2.0.0
 BuildRequires:  librtmp-devel
-BuildRequires:  openssl-devel
-
 %ifarch x86_64
 BuildRequires:  svt-hevc-devel
 Provides:  gstreamer1-svt-hevc = %{version}-%{release}
@@ -104,9 +102,6 @@ rm -rf %{buildroot}%{_libdir}/pkgconfig
 
 
 %changelog
-* Sat Oct 09 2021 Sérgio Basto <sergio@serjux.com> - 1:1.19.2-1
-- Update gstreamer1-plugins-bad-freeworld to 1.19.2
-
 * Sat Oct 09 2021 Sérgio Basto <sergio@serjux.com> - 1:1.19.1-3
 - gstreamer1.prov is broken and hangs, workarround it
 
