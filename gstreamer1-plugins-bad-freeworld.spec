@@ -5,7 +5,7 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Epoch:          1
-Version:        1.19.3
+Version:        1.19.2
 Release:        1%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
@@ -22,6 +22,7 @@ BuildRequires:  libXt-devel
 BuildRequires:  orc-devel
 BuildRequires:  libdca-devel
 BuildRequires:  faad2-devel
+BuildRequires:  libmms-devel
 BuildRequires:  mjpegtools-devel >= 2.0.0
 BuildRequires:  librtmp-devel
 BuildRequires:  openssl-devel
@@ -60,7 +61,6 @@ well enough, or the code is not of good enough quality.
     -D doc=disabled \
     -D introspection=disabled \
     -D examples=disabled \
-    -D gpl=enabled \
 %ifnarch x86_64
     -D svthevcenc=disabled \
 %endif
@@ -91,6 +91,7 @@ rm -rf %{buildroot}%{_libdir}/pkgconfig
 %{_libdir}/gstreamer-1.0/libgstde265.so
 %{_libdir}/gstreamer-1.0/libgstdtsdec.so
 %{_libdir}/gstreamer-1.0/libgstfaad.so
+%{_libdir}/gstreamer-1.0/libgstmms.so
 %{_libdir}/gstreamer-1.0/libgstmpeg2enc.so
 %{_libdir}/gstreamer-1.0/libgstmplex.so
 %{_libdir}/gstreamer-1.0/libgstrtmp.so
@@ -103,9 +104,6 @@ rm -rf %{buildroot}%{_libdir}/pkgconfig
 
 
 %changelog
-* Sun Nov 14 2021 Sérgio Basto <sergio@serjux.com> - 1:1.19.3-1
-- Update gstreamer1-plugins-bad-freeworld to 1.19.3
-
 * Sat Oct 09 2021 Sérgio Basto <sergio@serjux.com> - 1:1.19.2-1
 - Update gstreamer1-plugins-bad-freeworld to 1.19.2
 

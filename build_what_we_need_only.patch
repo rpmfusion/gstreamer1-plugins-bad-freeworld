@@ -1,6 +1,6 @@
 --- ./ext/meson.build.orig	2021-09-23 01:34:51.166608300 +0100
 +++ ./ext/meson.build	2021-10-09 17:52:41.117762463 +0100
-@@ -1,74 +1,9 @@
+@@ -1,76 +1,10 @@
 -subdir('aes')
 -subdir('assrender')
 -subdir('aom')
@@ -31,6 +31,7 @@
 -subdir('ladspa')
 -subdir('ldac')
  subdir('libde265')
+ subdir('libmms')
 -subdir('lv2')
 -subdir('mdns')
 -subdir('modplug')
@@ -38,6 +39,7 @@
  subdir('mplex')
 -subdir('musepack')
 -subdir('neon')
+-subdir('ofa')
 -subdir('onnx')
 -subdir('openal')
 -subdir('openaptx')
@@ -101,7 +103,7 @@ diff -uNrp a/gst/meson.build b/gst/meson.build
 diff -uNrp a/meson.build b/meson.build
 --- a/meson.build	2021-06-01 00:14:25.000000000 +0100
 +++ b/meson.build	2021-06-08 13:32:38.208390976 +0100
-@@ -292,6 +292,8 @@ gstapp_dep = dependency('gstreamer-app-1
+@@ -284,6 +284,8 @@ gstapp_dep = dependency('gstreamer-app-1
      fallback : ['gst-plugins-base', 'app_dep'])
  gstaudio_dep = dependency('gstreamer-audio-1.0', version : gst_req,
      fallback : ['gst-plugins-base', 'audio_dep'])
@@ -110,9 +112,9 @@ diff -uNrp a/meson.build b/meson.build
  gstfft_dep = dependency('gstreamer-fft-1.0', version : gst_req,
      fallback : ['gst-plugins-base', 'fft_dep'])
  gstriff_dep = dependency('gstreamer-riff-1.0', version : gst_req,
-@@ -494,13 +496,9 @@ pkgconfig.generate(
- 
- gpl_allowed = get_option('gpl').allowed()
+@@ -484,13 +486,9 @@ pkgconfig.generate(
+   description : 'Streaming media framework, bad plugins libraries',
+ )
  
 -subdir('gst-libs')
  subdir('gst')
