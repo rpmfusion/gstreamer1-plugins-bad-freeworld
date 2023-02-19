@@ -25,16 +25,18 @@ BuildRequires:  faad2-devel
 BuildRequires:  mjpegtools-devel >= 2.0.0
 BuildRequires:  librtmp-devel
 BuildRequires:  openssl-devel
+
+%ifarch x86_64
 BuildRequires:  svt-hevc-devel
+Provides:  gstreamer1-svt-hevc = %{version}-%{release}
+Provides:  gstreamer1-svt-hevc%{?_isa} = %{version}-%{release}
+Obsoletes: gstreamer1-svt-hevc < %{version}-%{release}
+%endif
 BuildRequires:  vo-amrwbenc-devel
 #BuildRequires:  vo-aacenc-devel
 BuildRequires:  libusbx-devel
 BuildRequires:  x265-devel
 BuildRequires:  libde265-devel
-
-Provides:  gstreamer1-svt-hevc = %{version}-%{release}
-Provides:  gstreamer1-svt-hevc%{?_isa} = %{version}-%{release}
-Obsoletes: gstreamer1-svt-hevc < %{version}-%{release}
 
 
 %description
@@ -59,6 +61,9 @@ well enough, or the code is not of good enough quality.
     -D introspection=disabled \
     -D examples=disabled \
     -D gpl=enabled \
+%ifnarch x86_64
+    -D svthevcenc=disabled \
+%endif
     -D nls=disabled
 
 
@@ -89,7 +94,9 @@ rm -rf %{buildroot}%{_libdir}/pkgconfig
 %{_libdir}/gstreamer-1.0/libgstmpeg2enc.so
 %{_libdir}/gstreamer-1.0/libgstmplex.so
 %{_libdir}/gstreamer-1.0/libgstrtmp.so
+%ifarch x86_64
 %{_libdir}/gstreamer-1.0/libgstsvthevcenc.so
+%endif
 #%%{_libdir}/gstreamer-1.0/libgstvoaacenc.so
 %{_libdir}/gstreamer-1.0/libgstvoamrwbenc.so
 %{_libdir}/gstreamer-1.0/libgstx265.so
