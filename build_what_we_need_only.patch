@@ -1,7 +1,7 @@
 diff -uNrp a/ext/meson.build b/ext/meson.build
 --- a/ext/meson.build	2023-01-23 19:29:34.000000000 +0000
 +++ b/ext/meson.build	2023-02-19 12:17:51.741137633 +0000
-@@ -1,75 +1,9 @@
+@@ -1,75 +1,8 @@
 -subdir('aes')
 -subdir('assrender')
 -subdir('aom')
@@ -66,7 +66,7 @@ diff -uNrp a/ext/meson.build b/ext/meson.build
 -subdir('teletextdec')
 -subdir('ttml')
 -subdir('voaacenc')
- subdir('voamrwbenc')
+-subdir('voamrwbenc')
 -subdir('vulkan')
 -subdir('wayland')
 -subdir('webrtc')
