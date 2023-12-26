@@ -1,7 +1,7 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Epoch:          1
-Version:        1.22.7
+Version:        1.22.8
 Release:        1%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
@@ -16,7 +16,6 @@ BuildRequires:  gstreamer1-plugins-bad-free-devel >= %{version}
 BuildRequires:  check
 BuildRequires:  libXt-devel
 BuildRequires:  orc-devel
-BuildRequires:  libdca-devel
 BuildRequires:  faad2-devel
 BuildRequires:  mjpegtools-devel >= 2.0.0
 BuildRequires:  librtmp-devel
@@ -79,13 +78,10 @@ rm -rf %{buildroot}%{_libdir}/pkgconfig
 %{_datadir}/gstreamer-1.0
 
 # Plugins without external dependencies
-%{_libdir}/gstreamer-1.0/libgstdvbsuboverlay.so
 %{_libdir}/gstreamer-1.0/libgstdvdspu.so
-%{_libdir}/gstreamer-1.0/libgstsiren.so
 
 # Plugins with external dependencies
 %{_libdir}/gstreamer-1.0/libgstde265.so
-%{_libdir}/gstreamer-1.0/libgstdtsdec.so
 %{_libdir}/gstreamer-1.0/libgstfaad.so
 %{_libdir}/gstreamer-1.0/libgstmpeg2enc.so
 %{_libdir}/gstreamer-1.0/libgstmplex.so
@@ -99,6 +95,10 @@ rm -rf %{buildroot}%{_libdir}/pkgconfig
 
 
 %changelog
+* Wed Dec 20 2023 Dominik Mierzejewski <dominik@greysector.net> - 1:1.22.8-1
+- Update to 1.22.8
+- Drop plugins moved to Fedora
+
 * Wed Nov 15 2023 Nicolas Chauvet <kwizart@gmail.com> - 1:1.22.7-1
 - Update to 1.22.7
 

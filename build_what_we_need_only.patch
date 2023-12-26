@@ -1,7 +1,7 @@
 diff -uNrp a/ext/meson.build b/ext/meson.build
 --- a/ext/meson.build	2023-01-23 19:29:34.000000000 +0000
 +++ b/ext/meson.build	2023-02-19 12:17:51.741137633 +0000
-@@ -1,75 +1,8 @@
+@@ -1,75 +1,7 @@
 -subdir('aes')
 -subdir('assrender')
 -subdir('aom')
@@ -16,7 +16,7 @@ diff -uNrp a/ext/meson.build b/ext/meson.build
 -subdir('dc1394')
 -subdir('directfb')
 -subdir('dtls')
- subdir('dts')
+-subdir('dts')
 -subdir('faac')
  subdir('faad')
 -subdir('fdkaac')
@@ -97,7 +97,7 @@ diff -uNrp a/gst/meson.build b/gst/meson.build
 -                  'timecode', 'transcode', 'videofilters',
 -                  'videoframe_audiolevel', 'videoparsers', 'videosignal',
 -                  'vmnc', 'y4m']
-+foreach plugin : ['dvbsuboverlay', 'dvdspu', 'siren']
++foreach plugin : ['dvdspu']
    if not get_option(plugin).disabled()
      subdir(plugin)
    endif
