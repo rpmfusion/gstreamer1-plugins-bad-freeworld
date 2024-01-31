@@ -1,7 +1,7 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Epoch:          1
-Version:        1.22.8
+Version:        1.22.9
 Release:        1%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
@@ -27,8 +27,6 @@ Provides:  gstreamer1-svt-hevc = %{version}-%{release}
 Provides:  gstreamer1-svt-hevc%{?_isa} = %{version}-%{release}
 Obsoletes: gstreamer1-svt-hevc < %{version}-%{release}
 %endif
-#BuildRequires:  vo-amrwbenc-devel
-#BuildRequires:  vo-aacenc-devel
 BuildRequires:  libusbx-devel
 BuildRequires:  x265-devel
 BuildRequires:  libde265-devel
@@ -89,12 +87,13 @@ rm -rf %{buildroot}%{_libdir}/pkgconfig
 %ifarch x86_64
 %{_libdir}/gstreamer-1.0/libgstsvthevcenc.so
 %endif
-#%%{_libdir}/gstreamer-1.0/libgstvoaacenc.so
-#%%{_libdir}/gstreamer-1.0/libgstvoamrwbenc.so
 %{_libdir}/gstreamer-1.0/libgstx265.so
 
 
 %changelog
+* Wed Jan 31 2024 Dominik Mierzejewski <dominik@greysector.net> - 1:1.22.9-1
+- Update to 1.22.9
+
 * Wed Dec 20 2023 Dominik Mierzejewski <dominik@greysector.net> - 1:1.22.8-1
 - Update to 1.22.8
 - Drop plugins moved to Fedora
