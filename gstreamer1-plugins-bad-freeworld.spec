@@ -7,6 +7,8 @@ License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
 Patch0:         build_what_we_need_only.patch
+# https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/7948
+Patch1:         e95a1aa3521e0f82609f5fc45751c3171ccf5f64.patch
 
 BuildRequires:  gcc-objc++
 BuildRequires:  meson
