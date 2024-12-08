@@ -1,14 +1,12 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Epoch:          1
-Version:        1.24.9
-Release:        2%{?dist}
+Version:        1.24.10
+Release:        1%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
 Patch0:         build_what_we_need_only.patch
-# https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/7948
-Patch1:         e95a1aa3521e0f82609f5fc45751c3171ccf5f64.patch
 
 BuildRequires:  gcc-objc++
 BuildRequires:  meson
@@ -93,6 +91,10 @@ rm -rf %{buildroot}%{_libdir}/pkgconfig
 
 
 %changelog
+* Sun Dec 08 2024 Dominik Mierzejewski <dominik@greysector.net> - 1:1.24.10-1
+- update to 1.24.10
+- drop obsolete patch
+
 * Sat Nov 23 2024 Leigh Scott <leigh123linux@gmail.com> - 1:1.24.9-2
 - Rebuild for new x265
 
