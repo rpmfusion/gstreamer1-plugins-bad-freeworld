@@ -1,7 +1,7 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Epoch:          1
-Version:        1.24.9
+Version:        1.24.10
 Release:        1%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
@@ -91,6 +91,13 @@ rm -rf %{buildroot}%{_libdir}/pkgconfig
 
 
 %changelog
+* Sun Dec 08 2024 Dominik Mierzejewski <dominik@greysector.net> - 1:1.24.10-1
+- update to 1.24.10
+- drop obsolete patch
+
+* Sat Nov 23 2024 Leigh Scott <leigh123linux@gmail.com> - 1:1.24.9-2
+- Rebuild for new x265
+
 * Sat Nov 02 2024 Dominik Mierzejewski <dominik@greysector.net> - 1:1.24.9-1
 - Update to 1.24.9
 
