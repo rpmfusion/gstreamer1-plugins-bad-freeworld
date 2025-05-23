@@ -10,7 +10,7 @@ Patch0:         build_what_we_need_only.patch
 # https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/8884.patch
 Patch1:         %{name}-CVE-2025-3887.patch
 
-BuildRequires:  gcc-objc++
+BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
