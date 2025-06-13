@@ -1,14 +1,12 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Epoch:          1
-Version:        1.24.11
-Release:        2%{?dist}
+Version:        1.24.13
+Release:        1%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
 Patch0:         build_what_we_need_only.patch
-# https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/8884.patch
-Patch1:         %{name}-CVE-2025-3887.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  meson
@@ -93,6 +91,10 @@ rm -rf %{buildroot}%{_libdir}/pkgconfig
 
 
 %changelog
+* Fri Jun 13 2025 Dominik Mierzejewski <dominik@greysector.net> - 1:1.24.13-1
+- update to 1.24.13
+- drop obsolete patch
+
 * Thu May 22 2025 Dominik Mierzejewski <dominik@greysector.net> - 1:1.24.11-2
 - backport fix for CVE-2025-3887
 
