@@ -2,7 +2,7 @@ Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Epoch:          1
 Version:        1.26.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
@@ -16,7 +16,6 @@ BuildRequires:  gstreamer1-plugins-bad-free-devel >= %{version}
 BuildRequires:  check
 BuildRequires:  libXt-devel
 BuildRequires:  orc-devel
-BuildRequires:  faad2-devel
 BuildRequires:  mjpegtools-devel >= 2.0.0
 BuildRequires:  librtmp-devel
 BuildRequires:  openssl-devel
@@ -75,12 +74,8 @@ rm -rf %{buildroot}%{_libdir}/pkgconfig
 # Take the whole dir for proper dir ownership (shared with other plugin pkgs)
 %{_datadir}/gstreamer-1.0
 
-# Plugins without external dependencies
-%{_libdir}/gstreamer-1.0/libgstdvdspu.so
-
 # Plugins with external dependencies
 %{_libdir}/gstreamer-1.0/libgstde265.so
-%{_libdir}/gstreamer-1.0/libgstfaad.so
 %{_libdir}/gstreamer-1.0/libgstmpeg2enc.so
 %{_libdir}/gstreamer-1.0/libgstmplex.so
 %{_libdir}/gstreamer-1.0/libgstrtmp.so
@@ -91,6 +86,9 @@ rm -rf %{buildroot}%{_libdir}/pkgconfig
 
 
 %changelog
+* Wed Jun 18 2025 Leigh Scott <leigh123linux@gmail.com> - 1:1.26.2-2
+- Faad support moved to fedora
+
 * Mon Jun 02 2025 Dominik Mierzejewski <dominik@greysector.net> - 1:1.26.2-1
 - update to 1.26.2
 
