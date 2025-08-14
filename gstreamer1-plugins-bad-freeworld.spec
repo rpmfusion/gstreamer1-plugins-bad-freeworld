@@ -1,8 +1,8 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Epoch:          1
-Version:        1.26.3
-Release:        2%{?dist}
+Version:        1.26.5
+Release:        1%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
@@ -16,7 +16,6 @@ BuildRequires:  gstreamer1-plugins-bad-free-devel >= %{version}
 BuildRequires:  check
 BuildRequires:  libXt-devel
 BuildRequires:  orc-devel
-BuildRequires:  mjpegtools-devel >= 2.0.0
 BuildRequires:  librtmp-devel
 BuildRequires:  openssl-devel
 
@@ -76,8 +75,6 @@ rm -rf %{buildroot}%{_libdir}/pkgconfig
 
 # Plugins with external dependencies
 %{_libdir}/gstreamer-1.0/libgstde265.so
-%{_libdir}/gstreamer-1.0/libgstmpeg2enc.so
-%{_libdir}/gstreamer-1.0/libgstmplex.so
 %{_libdir}/gstreamer-1.0/libgstrtmp.so
 %ifarch x86_64
 %{_libdir}/gstreamer-1.0/libgstsvthevcenc.so
@@ -86,6 +83,10 @@ rm -rf %{buildroot}%{_libdir}/pkgconfig
 
 
 %changelog
+* Thu Aug 14 2025 Dominik Mierzejewski <dominik@greysector.net> - 1:1.26.5-1
+- Update to 1.26.5
+- Drop mjpegtools plugins, they were moved to Fedora
+
 * Sun Jul 27 2025 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 1:1.26.3-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
 
