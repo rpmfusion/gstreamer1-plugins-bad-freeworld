@@ -1,7 +1,7 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Epoch:          1
-Version:        1.26.5
+Version:        1.26.6
 Release:        1%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
@@ -83,6 +83,9 @@ rm -rf %{buildroot}%{_libdir}/pkgconfig
 
 
 %changelog
+* Fri Sep 19 2025 Dominik Mierzejewski <dominik@greysector.net> - 1:1.26.6-1
+- Update to 1.26.6
+
 * Thu Aug 14 2025 Dominik Mierzejewski <dominik@greysector.net> - 1:1.26.5-1
 - Update to 1.26.5
 - Drop mjpegtools plugins, they were moved to Fedora
