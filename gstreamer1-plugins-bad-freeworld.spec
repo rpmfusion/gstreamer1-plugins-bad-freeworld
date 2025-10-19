@@ -1,8 +1,8 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Epoch:          1
-Version:        1.26.6
-Release:        2%{?dist}
+Version:        1.26.7
+Release:        1%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
@@ -83,6 +83,9 @@ rm -rf %{buildroot}%{_libdir}/pkgconfig
 
 
 %changelog
+* Sun Oct 19 2025 Dominik Mierzejewski <dominik@greysector.net> - 1:1.26.7-1
+- Update to 1.26.7
+
 * Tue Oct 07 2025 Leigh Scott <leigh123linux@gmail.com> - 1:1.26.6-2
 - Rebuild for svt-av1 soname bump
 
