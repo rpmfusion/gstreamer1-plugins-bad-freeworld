@@ -1,9 +1,9 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Epoch:          1
-Version:        1.26.10
-Release:        2%{?dist}
-License:        LGPLv2+
+Version:        1.28.1
+Release:        1%{?dist}
+License:        GPL-2.0-or-later
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
 Patch0:         build_what_we_need_only.patch
@@ -13,11 +13,7 @@ BuildRequires:  meson
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-bad-free-devel >= %{version}
-BuildRequires:  check
-BuildRequires:  libXt-devel
-BuildRequires:  orc-devel
 BuildRequires:  librtmp-devel
-BuildRequires:  openssl-devel
 
 %ifarch x86_64
 BuildRequires:  svt-hevc-devel
@@ -25,7 +21,6 @@ Provides:  gstreamer1-svt-hevc = %{version}-%{release}
 Provides:  gstreamer1-svt-hevc%{?_isa} = %{version}-%{release}
 Obsoletes: gstreamer1-svt-hevc < %{version}-%{release}
 %endif
-BuildRequires:  libusbx-devel
 BuildRequires:  x265-devel
 BuildRequires:  libde265-devel
 
@@ -46,16 +41,16 @@ well enough, or the code is not of good enough quality.
 # Note we don't bother with disabling everything which is in Fedora, that
 # is unmaintainable, instead we selectively run make in subdirs
 %meson \
+    --auto-features=disabled \
     -D package-name='gst-plugins-bad 1.0 rpmfusion rpm' \
     -D package-origin='http://rpmfusion.org/' \
-    -D doc=disabled \
-    -D introspection=disabled \
-    -D examples=disabled \
     -D gpl=enabled \
-%ifnarch x86_64
-    -D svthevcenc=disabled \
+    -D libde265=enabled \
+    -D rtmp=enabled \
+%ifarch x86_64
+    -D svthevcenc=enabled \
 %endif
-    -D nls=disabled
+    -D x265=enabled
 
 
 %meson_build
@@ -63,12 +58,11 @@ well enough, or the code is not of good enough quality.
 
 %install
 %meson_install
-rm -rf %{buildroot}%{_datadir}/gstreamer-1.0/encoding-profiles/
-rm -rf %{buildroot}%{_libdir}/pkgconfig
+rm -rv %{buildroot}%{_libdir}/pkgconfig
 
 
 %files
-%doc AUTHORS NEWS README.md README.static-linking RELEASE REQUIREMENTS
+%doc README.md README.static-linking RELEASE
 %license COPYING
 # Take the whole dir for proper dir ownership (shared with other plugin pkgs)
 %{_datadir}/gstreamer-1.0
@@ -83,6 +77,11 @@ rm -rf %{buildroot}%{_libdir}/pkgconfig
 
 
 %changelog
+* Sat Feb 28 2026 Dominik Mierzejewski <dominik@greysector.net> - 1:1.28.1-1
+- update to 1.28.1
+- rebase patch
+- correct License tag and use SPDX identifier
+
 * Mon Feb 02 2026 RPM Fusion Release Engineering <sergiomb@rpmfusion.org> - 1:1.26.10-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
 
