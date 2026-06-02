@@ -1,14 +1,12 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Epoch:          1
-Version:        1.24.11
-Release:        2%{?dist}
+Version:        1.26.7
+Release:        1%{?dist}
 License:        LGPLv2+
 URL:            https://gstreamer.freedesktop.org/
 Source0:        %{url}/src/gst-plugins-bad/gst-plugins-bad-%{version}.tar.xz
 Patch0:         build_what_we_need_only.patch
-# https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/8884.patch
-Patch1:         %{name}-CVE-2025-3887.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  meson
@@ -77,22 +75,18 @@ rm -rf %{buildroot}%{_libdir}/pkgconfig
 # Take the whole dir for proper dir ownership (shared with other plugin pkgs)
 %{_datadir}/gstreamer-1.0
 
-# Plugins without external dependencies
-%{_libdir}/gstreamer-1.0/libgstdvdspu.so
-
 # Plugins with external dependencies
 %{_libdir}/gstreamer-1.0/libgstde265.so
-%{_libdir}/gstreamer-1.0/libgstfaad.so
-%{_libdir}/gstreamer-1.0/libgstmpeg2enc.so
-%{_libdir}/gstreamer-1.0/libgstmplex.so
 %{_libdir}/gstreamer-1.0/libgstrtmp.so
 %ifarch x86_64
 %{_libdir}/gstreamer-1.0/libgstsvthevcenc.so
 %endif
 %{_libdir}/gstreamer-1.0/libgstx265.so
 
-
 %changelog
+* Tue Jun 02 2026 Andrew Bauer <Andrew Bauer <zonexpertconsulting@outlook.com>> - 1:1.26.7-1
+- Update to 1.26.7
+
 * Thu May 22 2025 Dominik Mierzejewski <dominik@greysector.net> - 1:1.24.11-2
 - backport fix for CVE-2025-3887
 
