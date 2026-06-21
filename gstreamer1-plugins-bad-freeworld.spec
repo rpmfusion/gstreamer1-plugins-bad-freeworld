@@ -1,7 +1,7 @@
 Summary:        GStreamer 1.0 streaming media framework "bad" plug-ins
 Name:           gstreamer1-plugins-bad-freeworld
 Epoch:          1
-Version:        1.28.3
+Version:        1.28.4
 Release:        1%{?dist}
 License:        GPL-2.0-or-later
 URL:            https://gstreamer.freedesktop.org/
@@ -13,7 +13,6 @@ BuildRequires:  meson
 BuildRequires:  gstreamer1-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-base-devel >= %{version}
 BuildRequires:  gstreamer1-plugins-bad-free-devel >= %{version}
-BuildRequires:  librtmp-devel
 
 %ifarch x86_64
 BuildRequires:  svt-hevc-devel
@@ -46,7 +45,6 @@ well enough, or the code is not of good enough quality.
     -D package-origin='http://rpmfusion.org/' \
     -D gpl=enabled \
     -D libde265=enabled \
-    -D rtmp=enabled \
 %ifarch x86_64
     -D svthevcenc=enabled \
 %endif
@@ -69,7 +67,6 @@ rm -rv %{buildroot}%{_libdir}/pkgconfig
 
 # Plugins with external dependencies
 %{_libdir}/gstreamer-1.0/libgstde265.so
-%{_libdir}/gstreamer-1.0/libgstrtmp.so
 %ifarch x86_64
 %{_libdir}/gstreamer-1.0/libgstsvthevcenc.so
 %endif
@@ -77,6 +74,10 @@ rm -rv %{buildroot}%{_libdir}/pkgconfig
 
 
 %changelog
+* Sun Jun 21 2026 Dominik Mierzejewski <dominik@greysector.net> - 1:1.28.4-1
+- update to 1.28.4
+- drop rtmp plugin, moved to Fedora
+
 * Tue May 12 2026 Dominik Mierzejewski <dominik@greysector.net> - 1:1.28.3-1
 - update to 1.28.3
 
