@@ -1,7 +1,7 @@
-diff -up gst-plugins-bad-1.28.1/ext/meson.build.orig gst-plugins-bad-1.28.1/ext/meson.build
---- gst-plugins-bad-1.28.1/ext/meson.build.orig	2026-02-26 02:44:06.000000000 +0100
-+++ gst-plugins-bad-1.28.1/ext/meson.build	2026-02-28 11:02:51.925884270 +0100
-@@ -1,87 +1,4 @@
+diff -up gst-plugins-bad-1.28.4/ext/meson.build.orig gst-plugins-bad-1.28.4/ext/meson.build
+--- gst-plugins-bad-1.28.4/ext/meson.build.orig	2026-06-12 14:19:43.000000000 +0200
++++ gst-plugins-bad-1.28.4/ext/meson.build	2026-06-21 17:02:15.166980559 +0200
+@@ -1,87 +1,3 @@
 -subdir('aes')
 -subdir('analyticsoverlay')
 -subdir('assrender')
@@ -60,7 +60,7 @@ diff -up gst-plugins-bad-1.28.1/ext/meson.build.orig gst-plugins-bad-1.28.1/ext/
 -subdir('qt6d3d11')
 -subdir('resindvd')
 -subdir('rsvg')
- subdir('rtmp')
+-subdir('rtmp')
 -subdir('sbc')
 -subdir('sctp')
 -subdir('smoothstreaming')
@@ -89,9 +89,9 @@ diff -up gst-plugins-bad-1.28.1/ext/meson.build.orig gst-plugins-bad-1.28.1/ext/
  subdir('x265')
 -subdir('zxing')
 -subdir('zbar')
-diff -up gst-plugins-bad-1.28.1/gst/meson.build.orig gst-plugins-bad-1.28.1/gst/meson.build
---- gst-plugins-bad-1.28.1/gst/meson.build.orig	2026-02-26 02:44:06.000000000 +0100
-+++ gst-plugins-bad-1.28.1/gst/meson.build	2026-02-28 11:01:11.840361671 +0100
+diff -up gst-plugins-bad-1.28.4/gst/meson.build.orig gst-plugins-bad-1.28.4/gst/meson.build
+--- gst-plugins-bad-1.28.4/gst/meson.build.orig	2026-06-12 14:19:43.000000000 +0200
++++ gst-plugins-bad-1.28.4/gst/meson.build	2026-06-21 17:01:12.224334745 +0200
 @@ -1,18 +1,3 @@
 -foreach plugin : ['accurip', 'adpcmdec', 'adpcmenc', 'aiff', 'asfmux',
 -                  'audiobuffersplit', 'audiofxbad', 'audiomixmatrix',
@@ -112,10 +112,10 @@ diff -up gst-plugins-bad-1.28.1/gst/meson.build.orig gst-plugins-bad-1.28.1/gst/
 +foreach plugin : []
    subdir(plugin)
  endforeach
-diff -up gst-plugins-bad-1.28.1/meson.build.orig gst-plugins-bad-1.28.1/meson.build
---- gst-plugins-bad-1.28.1/meson.build.orig	2026-02-26 02:44:06.000000000 +0100
-+++ gst-plugins-bad-1.28.1/meson.build	2026-02-28 23:10:49.718745280 +0100
-@@ -320,6 +320,8 @@ gstapp_dep = dependency('gstreamer-app-1
+diff -up gst-plugins-bad-1.28.4/meson.build.orig gst-plugins-bad-1.28.4/meson.build
+--- gst-plugins-bad-1.28.4/meson.build.orig	2026-06-12 14:19:43.000000000 +0200
++++ gst-plugins-bad-1.28.4/meson.build	2026-06-21 17:01:12.224522383 +0200
+@@ -321,6 +321,8 @@ gstapp_dep = dependency('gstreamer-app-1
      fallback : ['gst-plugins-base', 'app_dep'])
  gstaudio_dep = dependency('gstreamer-audio-1.0', version : gst_req,
      fallback : ['gst-plugins-base', 'audio_dep'])
@@ -124,7 +124,7 @@ diff -up gst-plugins-bad-1.28.1/meson.build.orig gst-plugins-bad-1.28.1/meson.bu
  gstfft_dep = dependency('gstreamer-fft-1.0', version : gst_req,
      fallback : ['gst-plugins-base', 'fft_dep'])
  gstriff_dep = dependency('gstreamer-riff-1.0', version : gst_req,
-@@ -574,13 +576,10 @@ else
+@@ -575,13 +577,10 @@ else
    pathsep = ':'
  endif
  
